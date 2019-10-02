@@ -8,6 +8,7 @@ public class RiotChestFinder {
     private String developmentKey;
     private URL url;
     private ArrayList<RiotID> ids;
+    private ArrayList<RiotChampion> champions;
 
     public RiotChestFinder() throws FileNotFoundException {
 
