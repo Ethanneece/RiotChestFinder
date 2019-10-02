@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52e7c3ad-a4f4-4b83-881a-c873a25770a5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/APIkeys.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RiotChampion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/APIkeys.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RiotChestFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RiotChestFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RiotID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RiotID.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,8 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RiotChestFinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
+            <state relative-caret-position="409">
+              <caret line="54" column="84" selection-start-line="54" selection-start-column="84" selection-end-line="54" selection-end-column="84" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1093#1094#0" expanded="true" />
@@ -38,10 +37,9 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RiotChampion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+            <state relative-caret-position="102">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#632#633#0" expanded="true" />
                 <element signature="e#665#666#0" expanded="true" />
                 <element signature="e#708#709#0" expanded="true" />
@@ -54,19 +52,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/APIkeys.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="111" selection-start-line="4" selection-start-column="111" selection-end-line="4" selection-end-column="111" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RiotID.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="132" selection-start-line="11" selection-start-column="132" selection-end-line="11" selection-end-column="132" />
+            <state relative-caret-position="119">
+              <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#659#660#0" expanded="true" />
@@ -93,10 +82,10 @@
       <list>
         <option value="$PROJECT_DIR$/DevelopmentKey" />
         <option value="$PROJECT_DIR$/src/RiotChampionFinder.java" />
-        <option value="$PROJECT_DIR$/src/RiotID.java" />
-        <option value="$PROJECT_DIR$/src/RiotChestFinder.java" />
         <option value="$PROJECT_DIR$/src/APIkeys.java" />
         <option value="$PROJECT_DIR$/src/RiotChampion.java" />
+        <option value="$PROJECT_DIR$/src/RiotChestFinder.java" />
+        <option value="$PROJECT_DIR$/src/RiotID.java" />
       </list>
     </option>
   </component>
@@ -133,7 +122,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570052391032" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570053129930" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -215,10 +204,17 @@
     <entry file="file://$PROJECT_DIR$/developmentKeyFolder" />
     <entry file="file://$PROJECT_DIR$/fea" />
     <entry file="file://$PROJECT_DIR$/DevelopmentKey" />
+    <entry file="file://$PROJECT_DIR$/src/APIkeys.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="4" selection-end-column="111" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/RiotChestFinder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
+        <state relative-caret-position="409">
+          <caret line="54" column="84" selection-start-line="54" selection-start-column="84" selection-end-line="54" selection-end-column="84" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1093#1094#0" expanded="true" />
@@ -229,8 +225,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RiotID.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="132" selection-start-line="11" selection-start-column="132" selection-end-line="11" selection-end-column="132" />
+        <state relative-caret-position="119">
+          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#659#660#0" expanded="true" />
@@ -239,19 +235,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/APIkeys.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="111" selection-start-line="4" selection-start-column="111" selection-end-line="4" selection-end-column="111" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RiotChampion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="37" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="37" />
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#632#633#0" expanded="true" />
             <element signature="e#665#666#0" expanded="true" />
             <element signature="e#708#709#0" expanded="true" />

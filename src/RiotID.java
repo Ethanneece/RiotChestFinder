@@ -7,11 +7,6 @@ public class RiotID {
     private String summonerId;
     private String accountId;
 
-    public RiotID(String summonerName) {
-
-        URL gettingsIDs = new URL("https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + summonerName + "?api_key=" + );
-    }
-
     public RiotID(String summonerName, String summonerId, String accountId) {
         this.summonerName = summonerName;
         this.summonerId = summonerId;

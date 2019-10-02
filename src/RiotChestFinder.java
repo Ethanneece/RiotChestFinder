@@ -47,3 +47,10 @@ public class RiotChestFinder {
         return developmentKey;
     }
 }
+
+/*
+    URL gettingsChampions = new URL("https://na1.api.riotgames.com/lol/" +
+            "champion-mastery/v4/champion-masteries/by-summoner/" + summonerId + "/by-champion/" + championID + "?api_key=" + apiKey);
+     URL gettingsIDs = new URL("https://na1.api.riotgames.com/lol/" +
+            "summoner/v4/summoners/by-name/" + summonerName + "?api_key=" + apiKey);
+ */
