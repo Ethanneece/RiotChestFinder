@@ -7,6 +7,8 @@ public class RiotID {
     private String summonerId;
     private String accountId;
 
+    public static final String ID_REQUEST = "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
+
     public RiotID(String summonerName, String summonerId, String accountId) {
         this.summonerName = summonerName;
         this.summonerId = summonerId;

@@ -1,4 +1,6 @@
 import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -12,39 +14,63 @@ public class RiotChestFinder {
 
     public RiotChestFinder() throws FileNotFoundException {
 
-        Scanner reader = new Scanner("DevelopmentKey");
+        Scanner reader = new Scanner(new File("developmentKey"));
 
         if(reader.ioException() != null) {
             throw new FileNotFoundException("DevelopmentKey Could not be found");
         }
 
         developmentKey = reader.nextLine();
+        System.out.println(developmentKey);
 
+        reader.close();
+
+        ids = new ArrayList<>();
+        champions = new ArrayList<>();
 
     }
 
-    private String getSummonerID(String summonerName) {
+    public RiotID getRiotID(String summonerName) {
         for (RiotID id : ids) {
             if(id.getSummonerName().equals(summonerName)) {
-                return id.getSummonerId();
+                return id;
             }
         }
 
-        ids.add(new RiotID(summonerName));
-    }
+        try {
+            URL gettingIDS = new URL(RiotID.ID_REQUEST + summonerName + "?api_key=" + developmentKey);
+            System.out.println(gettingIDS);
+            InputStream in  = getRequest(gettingIDS);
+            System.out.println(in.read());
 
-    private String getAccountID(String summonerName) {
-        for (RiotID id : ids) {
-            if(id.getSummonerName().equals(summonerName)) {
-                return id.getAccountId();
-            }
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        ids.add(new RiotID(summonerName));
+
+        return null;
     }
 
-    public String getDevelopmentKey() {
-        return developmentKey;
+    private InputStream getRequest(URL url)  {
+        try {
+            HttpURLConnection connect = (HttpURLConnection) url.openConnection();
+
+            connect.setRequestMethod("GET");
+            connect.setDoInput(true);
+            InputStream in = connect.getInputStream();
+            BufferedReader hi = new BufferedReader(new InputStreamReader(in));
+            System.out.println(hi);
+            int status = connect.getResponseCode();
+            System.out.println(status);
+            return in;
+
+        } catch(IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
 
