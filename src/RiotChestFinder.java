@@ -14,7 +14,7 @@ public class RiotChestFinder {
 
     public RiotChestFinder() throws FileNotFoundException {
 
-        Scanner reader = new Scanner(new File("developmentKey"));
+        Scanner reader = new Scanner(new File("developmentKey.txt"));
 
         if(reader.ioException() != null) {
             throw new FileNotFoundException("DevelopmentKey Could not be found");
@@ -36,19 +36,69 @@ public class RiotChestFinder {
                 return id;
             }
         }
-
         try {
             URL gettingIDS = new URL(RiotID.ID_REQUEST + summonerName + "?api_key=" + developmentKey);
-            System.out.println(gettingIDS);
             InputStream in  = getRequest(gettingIDS);
-            System.out.println(in.read());
+
+            InputStreamReader reader = new InputStreamReader(in);
+
+            String response = "";
+            String[] info = new String[2];
+            int number = reader.read();
+            int i = 0;
+
+            while(number != -1 && i < info.length * 2) {
+                char at = (char) number;
+                response +=(at);
+
+                if(at == ':' || at == ',') {
+//                    System.out.println(response);
+                    if (i % 2 != 0) {
+                        info[i/2] = response.substring(1, response.length() - 2);
+                    }else
+                        response = "";
+                    i++;
+                }
+
+                number = reader.read();
+            }
+
+//            for(String x: info)
+//                System.out.println(x);
+
+            String summonerId = info[0];
+            String accountId = info[1];
+            RiotID summoner = new RiotID(summonerName, summonerId, accountId);
+
+
+            return summoner;
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
+    }
 
+    public RiotChampion getRiotChampion(String summonerId, String championId){
+        for(RiotChampion champion: champions){
+            if(champion.getChampionId().equals(championId)){
+                return champion;
+            }
+        }
+        try{
+            URL gettingChampion = new URL(RiotChampion.ID_REQUEST + summonerId +
+                    "/by-champion/" + championId + "?api_key=" + developmentKey);
+            System.out.println(gettingChampion);
+            InputStream in  = getRequest(gettingChampion);
+            System.out.println(in.read());
+
+        }catch (MalformedURLException e){
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return null;
     }
@@ -61,9 +111,9 @@ public class RiotChestFinder {
             connect.setDoInput(true);
             InputStream in = connect.getInputStream();
             BufferedReader hi = new BufferedReader(new InputStreamReader(in));
-            System.out.println(hi);
+            //System.out.println(hi);
             int status = connect.getResponseCode();
-            System.out.println(status);
+            //System.out.println(status);
             return in;
 
         } catch(IOException e) {
