@@ -81,9 +81,9 @@ public class RiotChestFinder {
         return null;
     }
 
-    public RiotChampion getRiotChampion(String summonerId, String championId){
+    public RiotChampion getRiotChampion(String summonerId, int championId) {
         for(RiotChampion champion: champions){
-            if(champion.getChampionId().equals(championId)){
+            if(champion.getChampionId() == championId) {
                 return champion;
             }
         }
@@ -109,12 +109,8 @@ public class RiotChestFinder {
 
             connect.setRequestMethod("GET");
             connect.setDoInput(true);
-            InputStream in = connect.getInputStream();
-            BufferedReader hi = new BufferedReader(new InputStreamReader(in));
-            //System.out.println(hi);
-            int status = connect.getResponseCode();
-            //System.out.println(status);
-            return in;
+
+            return connect.getInputStream();
 
         } catch(IOException e) {
             e.printStackTrace();
@@ -123,10 +119,3 @@ public class RiotChestFinder {
         return null;
     }
 }
-
-/*
-    URL gettingsChampions = new URL("https://na1.api.riotgames.com/lol/" +
-            "champion-mastery/v4/champion-masteries/by-summoner/" + summonerId + "/by-champion/" + championID + "?api_key=" + apiKey);
-     URL gettingsIDs = new URL("https://na1.api.riotgames.com/lol/" +
-            "summoner/v4/summoners/by-name/" + summonerName + "?api_key=" + apiKey);
- */

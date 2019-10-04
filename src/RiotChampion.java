@@ -2,18 +2,18 @@ import java.util.Objects;
 
 public class RiotChampion {
 
-    private String championId;
+    private int championId;
     private String championName;
     private long lastPlayTime;
 
     public static final String ID_REQUEST = "https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/";
 
-    public RiotChampion(String championID, String championName){
-        this.championId = championId;
+    public RiotChampion(int championID, String championName){
+        this.championId = championID;
         this.championName = championName;
     }
 
-    public String getChampionId() {
+    public int getChampionId() {
         return championId;
     }
 
