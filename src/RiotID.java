@@ -30,9 +30,9 @@ public class RiotID {
     @Override
     public String toString() {
         return "RiotID{" +
-                "summonerName='" + summonerName + '\'' +
-                ", summonerId='" + summonerId + '\'' +
-                ", accountId='" + accountId + '\'' +
+                "summonerName = '" + summonerName + '\'' +
+                ", summonerId = '" + summonerId + '\'' +
+                ", accountId = '" + accountId + '\'' +
                 '}';
     }
 

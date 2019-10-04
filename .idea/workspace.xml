@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52e7c3ad-a4f4-4b83-881a-c873a25770a5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/out/production/RiotChestFinder1/RiotChampion.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/RiotChestFinder1/RiotChestFinder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/championIds.txt" beforeDir="false" afterPath="$PROJECT_DIR$/championIds.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/developmentKey.txt" beforeDir="false" afterPath="$PROJECT_DIR$/developmentKey.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RiotChampion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RiotChampion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RiotChestFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RiotChestFinder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RiotID.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RiotID.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestAllison.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestAllison.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,11 +22,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RiotChestFinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
+            <state relative-caret-position="102">
+              <caret line="126" column="39" lean-forward="true" selection-start-line="126" selection-start-column="39" selection-end-line="126" selection-end-column="39" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/TestAllison.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -33,19 +47,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/TestAllison.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="88" selection-start-line="6" selection-start-column="88" selection-end-line="6" selection-end-column="88" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RiotChampion.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="81" selection-start-line="10" selection-start-column="81" selection-end-line="10" selection-end-column="81" />
+            <state relative-caret-position="714">
+              <caret line="44" column="29" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
               <folding>
                 <element signature="e#307#308#0" expanded="true" />
                 <element signature="e#340#341#0" expanded="true" />
@@ -53,6 +58,9 @@
                 <element signature="e#651#652#0" expanded="true" />
                 <element signature="e#708#709#0" expanded="true" />
                 <element signature="e#727#728#0" expanded="true" />
+                <element signature="e#929#930#0" expanded="true" />
+                <element signature="e#950#951#0" expanded="true" />
+                <element signature="e#1718#1719#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -61,8 +69,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RiotID.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
+            <state relative-caret-position="136">
+              <caret line="35" column="20" lean-forward="true" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -88,14 +96,14 @@
         <option value="$PROJECT_DIR$/DevelopmentKey" />
         <option value="$PROJECT_DIR$/src/RiotChampionFinder.java" />
         <option value="$PROJECT_DIR$/src/APIkeys.java" />
-        <option value="$PROJECT_DIR$/src/RiotID.java" />
         <option value="$PROJECT_DIR$/developmentKey" />
         <option value="$PROJECT_DIR$/src/Test.java" />
         <option value="$PROJECT_DIR$/src/TestChamp.groovy" />
         <option value="$PROJECT_DIR$/src/TestChamp.java" />
-        <option value="$PROJECT_DIR$/src/RiotChampion.java" />
-        <option value="$PROJECT_DIR$/src/TestAllison.java" />
         <option value="$PROJECT_DIR$/src/RiotChestFinder.java" />
+        <option value="$PROJECT_DIR$/src/RiotChampion.java" />
+        <option value="$PROJECT_DIR$/src/RiotID.java" />
+        <option value="$PROJECT_DIR$/src/TestAllison.java" />
       </list>
     </option>
   </component>
@@ -138,7 +146,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570155637625" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1570232145058" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="Groovy JUnit" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Groovy JUnit" value="groovy.util.GroovyTestCase" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -297,16 +305,6 @@
     <entry file="file://$PROJECT_DIR$/RiotChestFinder1.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RiotID.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/out/production/RiotChestFinder1/Test.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -317,10 +315,35 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/championIds.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1173" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RiotChestFinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="126" column="39" lean-forward="true" selection-start-line="126" selection-start-column="39" selection-end-line="126" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RiotID.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="35" column="20" lean-forward="true" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/RiotChampion.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="81" selection-start-line="10" selection-start-column="81" selection-end-line="10" selection-end-column="81" />
+        <state relative-caret-position="714">
+          <caret line="44" column="29" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
           <folding>
             <element signature="e#307#308#0" expanded="true" />
             <element signature="e#340#341#0" expanded="true" />
@@ -328,21 +351,17 @@
             <element signature="e#651#652#0" expanded="true" />
             <element signature="e#708#709#0" expanded="true" />
             <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#929#930#0" expanded="true" />
+            <element signature="e#950#951#0" expanded="true" />
+            <element signature="e#1718#1719#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TestAllison.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="88" selection-start-line="6" selection-start-column="88" selection-end-line="6" selection-end-column="88" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RiotChestFinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="107" lean-forward="true" selection-start-line="107" selection-end-line="107" />
+        <state relative-caret-position="187">
+          <caret line="11" column="5" lean-forward="true" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -5,13 +5,15 @@ public class RiotChampion {
     private String championId;
     private String championName;
     private long lastPlayTime;
+    private boolean hasChest;
 
     public static final String ID_REQUEST = "https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/";
 
-    public RiotChampion(String championID, String championName, long lastPlayTime){
+    public RiotChampion(String championId, String championName, long lastPlayTime, boolean hasChest){
         this.championId = championId;
         this.championName = championName;
         this.lastPlayTime = lastPlayTime;
+        this.hasChest = hasChest;
     }
 
     public String getChampionId() {
@@ -30,12 +32,17 @@ public class RiotChampion {
         this.lastPlayTime = lastPlayTime;
     }
 
+    public boolean isHasChest(){
+        return hasChest;
+    }
 
     @Override
     public String toString() {
         return "RiotChampion{" +
-                "championID='" + championId + '\'' +
-                ", championName='" + championName + '\'' +
+                "championId = '" + championId + '\'' +
+                ", championName = '" + championName + '\'' +
+                ", lastPlayTime = " + lastPlayTime +
+                ", hasChest= " + hasChest +
                 '}';
     }
 

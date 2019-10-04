@@ -1,10 +1,10 @@
-    Aatrox       = 266
-    Ahri         = 103
-    Akali        = 84
-    Alistar      = 12
-    Amumu        = 32
-    Anivia       = 34
-    Annie        = 1
+Aatrox       = 266
+Ahri         = 103
+Akali        = 84
+Alistar      = 12
+Amumu        = 32
+Anivia       = 34
+Annie        = 1
 Ashe         = 22
 AurelionSol  = 136
 Azir         = 268
