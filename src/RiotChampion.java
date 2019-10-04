@@ -8,9 +8,10 @@ public class RiotChampion {
 
     public static final String ID_REQUEST = "https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/";
 
-    public RiotChampion(String championID, String championName){
+    public RiotChampion(String championID, String championName, long lastPlayTime){
         this.championId = championId;
         this.championName = championName;
+        this.lastPlayTime = lastPlayTime;
     }
 
     public String getChampionId() {
@@ -24,6 +25,11 @@ public class RiotChampion {
     public long getLastPlayTime() {
         return lastPlayTime;
     }
+
+    public void setLastPlayTime(long lastPlayTime){
+        this.lastPlayTime = lastPlayTime;
+    }
+
 
     @Override
     public String toString() {

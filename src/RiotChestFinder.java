@@ -81,18 +81,39 @@ public class RiotChestFinder {
         return null;
     }
 
-    public RiotChampion getRiotChampion(String summonerId, String championId){
+    public long getChampionLastPlayTime(String summonerId, String championId){
         for(RiotChampion champion: champions){
             if(champion.getChampionId().equals(championId)){
-                return champion;
+                return champion.getLastPlayTime();
             }
         }
         try{
             URL gettingChampion = new URL(RiotChampion.ID_REQUEST + summonerId +
                     "/by-champion/" + championId + "?api_key=" + developmentKey);
-            System.out.println(gettingChampion);
             InputStream in  = getRequest(gettingChampion);
-            System.out.println(in.read());
+            InputStreamReader reader = new InputStreamReader(in);
+
+            String response = "";
+            int number = reader.read();
+            int i = 0;
+
+            while(number != -1) {
+                char at = (char) number;
+                response +=(at);
+                if(at == ':' || at == ',') {
+                    if (i == 7)
+                        break;
+                    else
+                        response = "";
+
+                    i++;
+                }
+                number = reader.read();
+            }
+//            System.out.println(response);
+
+           return Long.parseLong(response.substring(0, response.length() - 2));
+
 
         }catch (MalformedURLException e){
             e.printStackTrace();
@@ -100,7 +121,7 @@ public class RiotChestFinder {
             e.printStackTrace();
         }
 
-        return null;
+        return 0;
     }
 
     private InputStream getRequest(URL url)  {
