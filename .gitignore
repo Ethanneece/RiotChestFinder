@@ -8,3 +8,4 @@ developmentKey.txt
 *.xml
 out/production/RiotChestFinder1/TestAllison.class
 src/TestAllison.java
+.idea/workspace.xml
