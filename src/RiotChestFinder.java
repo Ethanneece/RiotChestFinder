@@ -63,9 +63,6 @@ public class RiotChestFinder {
                 number = reader.read();
             }
 
-//            for(String x: info)
-//                System.out.println(x);
-
             String summonerId = info[0];
             String accountId = info[1];
             RiotID summoner = new RiotID(summonerName, summonerId, accountId);
