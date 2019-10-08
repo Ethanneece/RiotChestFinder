@@ -1,4 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class RiotChampion {
 
@@ -34,6 +37,29 @@ public class RiotChampion {
 
     public boolean isHasChest(){
         return hasChest;
+    }
+
+    /**
+     * Will use when making a new champion to get their id from the file
+     * Otherwise if the champion already exists use RiotChampion.getChampionId();
+     *
+     * @param championName
+     * @return
+     * @throws FileNotFoundException
+     */
+    public static int getChampionIdFromFile(String championName) throws FileNotFoundException {
+        String id = "";
+        Scanner scan = new Scanner(new File("championIds.txt"));
+
+        while(scan.hasNextLine()) {
+            String hold = scan.nextLine();
+
+            if(hold.contains(championName)) {
+                return new Integer(hold.substring(hold.indexOf('=') + 2));
+            }
+        }
+
+        return -1;
     }
 
     @Override

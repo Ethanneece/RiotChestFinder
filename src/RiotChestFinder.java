@@ -1,9 +1,14 @@
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class RiotChestFinder {
 
@@ -11,6 +16,7 @@ public class RiotChestFinder {
     private URL url;
     private ArrayList<RiotID> ids;
     private ArrayList<RiotChampion> champions;
+    private Map<String, Integer>
 
     public RiotChestFinder() throws FileNotFoundException {
 
@@ -46,42 +52,15 @@ public class RiotChestFinder {
         }
         try {
             URL gettingIDS = new URL(RiotID.ID_REQUEST + summonerName + "?api_key=" + developmentKey);
-            InputStream in  = getRequest(gettingIDS);
-
-            InputStreamReader reader = new InputStreamReader(in);
-
-            String response = "";
-            String[] info = new String[2];
-            int number = reader.read();
-            int i = 0;
-
-            while(number != -1 && i < info.length * 2) {
-                char at = (char) number;
-                response +=(at);
-
-                if(at == ':' || at == ',') {
-                    if (i % 2 != 0) {
-                        info[i/2] = response.substring(1, response.length() - 2);
-                    }else
-                        response = "";
-                    i++;
-                }
-
-                number = reader.read();
-            }
-
-            String summonerId = info[0];
-            String accountId = info[1];
-            RiotID summoner = new RiotID(summonerName, summonerId, accountId);
 
 
-            return summoner;
+            JSONParser par = new JSONParser();
+            par.parse(riotIDRequest);
 
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
         return null;
     }
 
@@ -93,7 +72,7 @@ public class RiotChestFinder {
      * @param championName will use this to get championId for the URL
      * @return
      */
-    public RiotChampion getRiotChampion(String summonerId, String championName) throws FileNotFoundException{
+    public RiotChampion getRiotChampion(String summonerId, String championName) throws FileNotFoundException {
         for(RiotChampion champion: champions){
             if(champion.getChampionId().equals(getChampionIdFromFile(championName))){
                 System.out.println("Champion exists");
@@ -138,41 +117,15 @@ public class RiotChestFinder {
         return null;
     }
 
-    /**
-     * Will use when making a new champion to get their id from the file
-     * Otherwise if the champion already exists use RiotChampion.getChampionId();
-     *
-     * @param championName
-     * @return
-     * @throws FileNotFoundException
-     */
-    public static String getChampionIdFromFile(String championName) throws FileNotFoundException{
-        String id = "";
-        Scanner scan = new Scanner(new File("championIds.txt"));
-
-        while(scan.hasNextLine()){
-            String hold = scan.nextLine();
-            if(hold.substring(0, hold.indexOf('=')).trim().equals(championName)) {
-                id = hold.substring(hold.indexOf('=') + 2);
-                return id;
-            }
-        }
-
-        return id;
-    }
-
-    private InputStream getRequest(URL url)  {
+    private String getRequest(URL url)  {
         try {
             HttpURLConnection connect = (HttpURLConnection) url.openConnection();
 
             connect.setRequestMethod("GET");
             connect.setDoInput(true);
             InputStream in = connect.getInputStream();
-            BufferedReader hi = new BufferedReader(new InputStreamReader(in));
-            //System.out.println(hi);
-            int status = connect.getResponseCode();
-            //System.out.println(status);
-            return in;
+
+            return new BufferedReader(new InputStreamReader(in)).lines().collect(Collectors.joining("\n"));
 
         } catch(IOException e) {
             e.printStackTrace();
