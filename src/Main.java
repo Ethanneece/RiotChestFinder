@@ -5,6 +5,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -40,7 +42,14 @@ public class Main extends Application {
             try {
                 RiotChestFinder find = new RiotChestFinder();
                 RiotID summonerId = find.getRiotID(summonerInput.getText());
-                System.out.println(summonerId);
+//                System.out.println(summonerId);
+
+                Text name = new Text("NAME: " + summonerId.getSummonerName());
+                Text id = new Text("SUMMONER ID: " + summonerId.getSummonerId());
+                Text account = new Text("ACCOUNT ID: " + summonerId.getAccountId());
+                VBox info = new VBox(name, id, account);
+                root.setCenter(info);
+
             }catch (FileNotFoundException b){
                 System.out.println("File not found");
             }
