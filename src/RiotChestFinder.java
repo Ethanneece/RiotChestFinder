@@ -1,5 +1,5 @@
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -51,11 +51,13 @@ public class RiotChestFinder {
             }
         }
         try {
-            URL gettingIDS = new URL(RiotID.ID_REQUEST + summonerName + "?api_key=" + developmentKey);
+            URL gettingIDs = new URL(RiotID.ID_REQUEST + summonerName + "?api_key=" + developmentKey);
+            String riotIdInfo = getRequest(gettingIDs);
 
+            JSONObject jason = (JSONObject) new JSONParser().parse(riotIdInfo);
 
-            JSONParser par = new JSONParser();
-            par.parse(riotIDRequest);
+            return new RiotID( (String) jason.get("Summoner Name"), (String) jason.get("SummonerId"), (String) jason.get("accountId"));
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -74,7 +76,7 @@ public class RiotChestFinder {
      */
     public RiotChampion getRiotChampion(String summonerId, String championName) throws FileNotFoundException {
         for(RiotChampion champion: champions){
-            if(champion.getChampionId().equals(getChampionIdFromFile(championName))){
+            if(champion.getChampionId().equals(getChampionIdFromFile(championName))) {
                 System.out.println("Champion exists");
                 return champion;
             }
@@ -109,7 +111,7 @@ public class RiotChestFinder {
            return new RiotChampion(getChampionIdFromFile(championName), championName, lastPlayTime, hasChest);
 
 
-        }catch (MalformedURLException e){
+        } catch (MalformedURLException e){
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
