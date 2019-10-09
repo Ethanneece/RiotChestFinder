@@ -76,14 +76,14 @@ public class RiotChestFinder {
      */
     public RiotChampion getRiotChampion(String summonerId, String championName) throws FileNotFoundException {
         for(RiotChampion champion: champions){
-            if(champion.getChampionId().equals(getChampionIdFromFile(championName))) {
+            if(champion.getChampionId().equals(RiotChampion.getChampionIdFromFile(championName))) {
                 System.out.println("Champion exists");
                 return champion;
             }
         }
         try{
             URL gettingChampion = new URL(RiotChampion.ID_REQUEST + summonerId +
-                    "/by-champion/" + getChampionIdFromFile(championName) + "?api_key=" + developmentKey);
+                    "/by-champion/" + RiotChampion.getChampionIdFromFile(championName) + "?api_key=" + developmentKey);
             InputStream in  = getRequest(gettingChampion);
             InputStreamReader reader = new InputStreamReader(in);
 
