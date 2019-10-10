@@ -4,24 +4,31 @@ import org.json.simple.parser.JSONParser;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalTime;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
 public class RiotChestFinder {
 
     private String developmentKey;
-    private URL url;
+
+    private int requestFiredIn2Minutes;
+    private LocalTime timeWhenRequestReset;
+    private final int MAX_REQUEST_PER_2_MINUTES = 100;
 
     public RiotChestFinder() throws FileNotFoundException {
 
         Scanner reader = new Scanner(new File("developmentKey.txt"));
 
         if(reader.ioException() != null) {
-            throw new FileNotFoundException("DevelopmentKey Could not be found");
+            throw new FileNotFoundException("DevelopmentKey.txt Could not be found");
         }
 
         developmentKey = reader.nextLine();
         reader.close();
+
+        requestFiredIn2Minutes = 0;
+        timeWhenRequestReset = LocalTime.now().plusMinutes(2);
     }
 
     /**
@@ -55,75 +62,46 @@ public class RiotChestFinder {
         return null;
     }
 
-//    /**
-//     * Will get the information about a champion
-//     * that a specific player plays
-//     *
-//     * @param summonerId
-//     * @param championName will use this to get championId for the URL
-//     * @return
-//     */
-//    public RiotChampion getRiotChampion(String summonerId, String championName) throws FileNotFoundException {
-//        for(RiotChampion champion: champions) {
-//            if(champion.getChampionId().equals(RiotChampion.getChampionIdFromFile(championName))) {
-//                System.out.println("Champion exists");
-//                return champion;
-//            }
-//        }
-//        try{
-//            URL gettingChampion = new URL(RiotChampion.ID_REQUEST + summonerId +
-//                    "/by-champion/" + RiotChampion.getChampionIdFromFile(championName) + "?api_key=" + developmentKey);
-//            InputStream in  = getRequest(gettingChampion);
-//            InputStreamReader reader = new InputStreamReader(in);
-//
-//            String response = "";
-//            boolean hasChest = false;
-//            long lastPlayTime = 0000000000000;
-//            int number = reader.read();
-//            int i = 0;
-//
-//            while(number != -1 && i < 14) {
-//                char at = (char) number;
-//                response +=(at);
-//                if(at == ':' || at == ',') {
-//                    if(i == 7)
-//                        lastPlayTime = Long.parseLong(response.substring(0, response.length() - 1));
-//                    else if(i == 13)
-//                        hasChest = Boolean.parseBoolean(response.substring(0, response.length() - 1));
-//
-//                    response = "";
-//                    i++;
-//                }
-//                number = reader.read();
-//            }
-//
-//           return new RiotChampion(getChampionIdFromFile(championName), championName, lastPlayTime, hasChest);
-//
-//
-//        } catch (MalformedURLException e){
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
+    /**
+     * Makes a request at the given URL and returns a String representation of the information back.
+     * @param url
+     * @return null if either an error is thrown or if the rate limit is exceeded.
+     */
+    private String getRequest(URL url) {
 
-    private String getRequest(URL url)  {
+        //Resetting your amount of calls you get to make
+        if(LocalTime.now().isAfter(timeWhenRequestReset)) {
+            requestFiredIn2Minutes = 0;
+            timeWhenRequestReset = LocalTime.now().plusMinutes(2);
+        }
+
         try {
-            HttpURLConnection connect = (HttpURLConnection) url.openConnection();
+            if(requestFiredIn2Minutes < MAX_REQUEST_PER_2_MINUTES) {
+                HttpURLConnection connect = (HttpURLConnection) url.openConnection();
 
-            connect.setRequestMethod("GET");
-            connect.setDoInput(true);
-            InputStream in = connect.getInputStream();
+                connect.setRequestMethod("GET");
+                connect.setDoInput(true);
 
-            System.out.println(connect.getResponseCode());
+                InputStream in = connect.getInputStream();
 
-            return new BufferedReader(new InputStreamReader(in)).lines().collect(Collectors.joining("\n"));
+                requestFiredIn2Minutes++;
+
+                return new BufferedReader(new InputStreamReader(in)).lines().collect(Collectors.joining("\n"));
+            }
+            else {
+                return null;
+            }
 
         } catch(IOException e) {
             e.printStackTrace();
         }
 
         return null;
+    }
+
+    public boolean rateLimitExceeded() {
+        if (requestFiredIn2Minutes > MAX_REQUEST_PER_2_MINUTES) {
+            return true;
+        }
     }
 }

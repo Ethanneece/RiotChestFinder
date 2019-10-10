@@ -26,7 +26,7 @@ public class Main extends Application {
 
         finder = new RiotChestFinder();
 
-        primaryStage.setTitle("League of Legends Info");
+        primaryStage.setTitle("FindingChestChampions");
         primaryStage.setWidth(WIDTH);
         primaryStage.setHeight(HEIGHT);
 
@@ -51,7 +51,14 @@ public class Main extends Application {
 
     private void summonerControllerPress() {
         Summoner player = finder.getSummoner(summonerInput.getText());
+
         summonerInput.clear();
-        summonerInput.setText(player.getSummonerId());
+
+        if(player != null) {
+            summonerInput.setText(player.getSummonerId());
+        }
+        else {
+            summonerInput.setText("Invalid Request");
+        }
     }
 }
