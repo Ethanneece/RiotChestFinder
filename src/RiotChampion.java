@@ -12,7 +12,7 @@ public class RiotChampion {
 
     public static final String ID_REQUEST = "https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/";
 
-    public RiotChampion(String championId, String championName, long lastPlayTime, boolean hasChest){
+    public RiotChampion(String championId, String championName, long lastPlayTime, boolean hasChest) {
         this.championId = championId;
         this.championName = championName;
         this.lastPlayTime = lastPlayTime;

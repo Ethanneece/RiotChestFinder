@@ -5,7 +5,7 @@ public class Summoner {
     private String summonerId;
     private String accountId;
 
-    public static final String ID_REQUEST = "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
+    public static final String ACCOUNT_ID_REQUEST = "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
     public static final String CHAMPION_ID_REQUEST = "https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/";
 
 
@@ -29,11 +29,9 @@ public class Summoner {
 
     @Override
     public String toString() {
-        return "RiotID{" +
-                "summonerName = '" + summonerName + '\'' +
-                ", summonerId = '" + summonerId + '\'' +
-                ", accountId = '" + accountId + '\'' +
-                '}';
+        return "Summoner: " + summonerName + "\n" +
+                "\t summonerId: " + summonerId + "\n" +
+                "\t accountId: " + accountId + "\n";
     }
 
     @Override
