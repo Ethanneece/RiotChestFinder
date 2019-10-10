@@ -34,6 +34,11 @@ public class RiotChestFinder {
      */
     public Summoner getSummoner(String summonerName) {
 
+        if(summonerName.matches("^[0-9\\\\p{L} _\\\\.]+$")) {
+            System.out.println("Bad Summoner request" );
+            return null;
+        }
+
         try {
             URL gettingIDs = new URL(Summoner.ACCOUNT_ID_REQUEST + summonerName + "?api_key=" + developmentKey);
             String riotIdInfo = getRequest(gettingIDs);

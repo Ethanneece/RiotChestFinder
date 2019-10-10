@@ -4,6 +4,7 @@ public class Summoner {
     private String summonerName;
     private String summonerId;
     private String accountId;
+    private String[] championsWithOutChest;
 
     public static final String ACCOUNT_ID_REQUEST = "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
     public static final String CHAMPION_ID_REQUEST = "https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/";
