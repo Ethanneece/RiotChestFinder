@@ -62,6 +62,10 @@ public class RiotChestFinder {
         return null;
     }
 
+    public String[] getNoChests(){
+        //uwu lemme do this okie
+    }
+
     /**
      * Makes a request at the given URL and returns a String representation of the information back.
      * @param url
@@ -103,5 +107,6 @@ public class RiotChestFinder {
         if (requestFiredIn2Minutes > MAX_REQUEST_PER_2_MINUTES) {
             return true;
         }
+        return false;
     }
 }
