@@ -73,7 +73,6 @@ public class RiotChestFinder {
             URL gettingChampions = new URL("https://na1.api.riotgames.com/lol/champion-mastery" +
                     "/v4/champion-masteries/by-summoner/" + summonerId + "?api_key=" + developmentKey);
             String info = getRequest(gettingChampions);
-            System.out.println(info);
 
             JSONArray boiz = (JSONArray) new JSONParser().parse(info);
 
@@ -82,6 +81,9 @@ public class RiotChestFinder {
                 if (!(boolean) jasonboi.get("has")) {
                     names.add((String) jasonboi.get("championId"));
                 }
+            }
+            for (int i = 0; i < names.size(); i++) {
+                System.out.println(names.get(i));
             }
 
         }catch (MalformedURLException e){
