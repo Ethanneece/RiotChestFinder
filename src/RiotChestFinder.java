@@ -1,10 +1,14 @@
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.*;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -62,8 +66,31 @@ public class RiotChestFinder {
         return null;
     }
 
-    public String[] getNoChests(){
+    public ArrayList<String> getNoChests(String summonerId){
         //uwu lemme do this okie
+        ArrayList<String> names = new ArrayList<String>();
+        try {
+            URL gettingChampions = new URL("https://na1.api.riotgames.com/lol/champion-mastery" +
+                    "/v4/champion-masteries/by-summoner/" + summonerId + "?api_key=" + developmentKey);
+            String info = getRequest(gettingChampions);
+            System.out.println(info);
+
+            JSONArray boiz = (JSONArray) new JSONParser().parse(info);
+
+            for(int i = 0; i < boiz.size(); i++) {
+                JSONObject jasonboi = (JSONObject) boiz.get(i);
+                if (!(boolean) jasonboi.get("has")) {
+                    names.add((String) jasonboi.get("championId"));
+                }
+            }
+
+        }catch (MalformedURLException e){
+            System.out.println("Bad Request");
+        }catch (ParseException e){
+            System.out.println("JSON failed");
+        }
+
+        return names;
     }
 
     /**
