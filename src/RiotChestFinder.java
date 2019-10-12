@@ -78,7 +78,8 @@ public class RiotChestFinder {
 
             for(int i = 0; i < boiz.size(); i++) {
                 JSONObject jasonboi = (JSONObject) boiz.get(i);
-                if (!(boolean) jasonboi.get("has")) {
+                System.out.println(jasonboi);
+                if (!(boolean) jasonboi.get("chestGranted")) {
                     names.add((String) jasonboi.get("championId"));
                 }
             }

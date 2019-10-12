@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52e7c3ad-a4f4-4b83-881a-c873a25770a5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RiotChestFinder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RiotChestFinder.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -20,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RiotChestFinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="79" column="63" lean-forward="true" selection-start-line="79" selection-start-column="63" selection-end-line="79" selection-end-column="63" />
+            <state relative-caret-position="114">
+              <caret line="81" column="57" selection-start-line="81" selection-start-column="57" selection-end-line="81" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -67,7 +66,11 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/developmentKey.txt">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="42" lean-forward="true" selection-start-column="42" selection-end-column="42" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -111,10 +114,10 @@
         <option value="$PROJECT_DIR$/src/TestAllison.java" />
         <option value="$PROJECT_DIR$/developmentKey" />
         <option value="$PROJECT_DIR$/src/RiotChampion.java" />
-        <option value="$PROJECT_DIR$/developmentKey.txt" />
         <option value="$PROJECT_DIR$/src/Summoner.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Test.java" />
+        <option value="$PROJECT_DIR$/developmentKey.txt" />
         <option value="$PROJECT_DIR$/src/RiotChestFinder.java" />
       </list>
     </option>
@@ -264,7 +267,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25538972" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.29519072" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39869988" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -344,16 +347,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RiotChestFinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="79" column="63" lean-forward="true" selection-start-line="79" selection-start-column="63" selection-end-line="79" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RiotChampion.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -384,13 +377,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/developmentKey.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Summoner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="82" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/developmentKey.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="42" lean-forward="true" selection-start-column="42" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RiotChestFinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="81" column="57" selection-start-line="81" selection-start-column="57" selection-end-line="81" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
