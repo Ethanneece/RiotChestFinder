@@ -66,9 +66,9 @@ public class RiotChestFinder {
         return null;
     }
 
-    public ArrayList<String> getNoChests(String summonerId){
+    public ArrayList<Long> getNoChests(String summonerId){
         //uwu lemme do this okie
-        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<Long> names = new ArrayList<Long>();
         try {
             URL gettingChampions = new URL("https://na1.api.riotgames.com/lol/champion-mastery" +
                     "/v4/champion-masteries/by-summoner/" + summonerId + "?api_key=" + developmentKey);
@@ -78,13 +78,10 @@ public class RiotChestFinder {
 
             for(int i = 0; i < boiz.size(); i++) {
                 JSONObject jasonboi = (JSONObject) boiz.get(i);
-                System.out.println(jasonboi);
+
                 if (!(boolean) jasonboi.get("chestGranted")) {
-                    names.add((String) jasonboi.get("championId"));
+                    names.add((Long)jasonboi.get("championId"));
                 }
-            }
-            for (int i = 0; i < names.size(); i++) {
-                System.out.println(names.get(i));
             }
 
         }catch (MalformedURLException e){

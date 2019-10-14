@@ -4,7 +4,7 @@ public class Summoner {
     private String summonerName;
     private String summonerId;
     private String accountId;
-    private String[] championsWithOutChest;
+    private long[] championsWithOutChest;
 
     public static final String ACCOUNT_ID_REQUEST = "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
     public static final String CHAMPIONS_REQUEST = "theres another differnt URL for if you want all champs I'll add it when the website isnt down";
@@ -26,6 +26,14 @@ public class Summoner {
 
     public String getAccountId() {
         return accountId;
+    }
+
+    public long[] getChampionsWithOutChest() {
+        return championsWithOutChest;
+    }
+
+    public void setChampionsWithOutChest(long[] championsWithOutChest) {
+        this.championsWithOutChest = championsWithOutChest;
     }
 
     @Override
