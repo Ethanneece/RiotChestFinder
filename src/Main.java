@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import javax.swing.*;
@@ -18,8 +19,11 @@ public class Main extends Application {
     private final int HEIGHT = 600;
 
     private Button summonerController;
-    private TextField summonerInput;
     private RiotChestFinder finder;
+    private TextField summonerInput;
+    private VBox io;
+    private Scene scene;
+    private BorderPane root;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -30,20 +34,27 @@ public class Main extends Application {
         primaryStage.setWidth(WIDTH);
         primaryStage.setHeight(HEIGHT);
 
-        BorderPane root = new BorderPane();
+        root = new BorderPane();
 
         summonerInput = new TextField();
+        HBox tagAndInput = new HBox(new Text("Name: "), summonerInput);
+        tagAndInput.setAlignment(Pos.CENTER);
         summonerController = new Button("Find Summoner");
-        HBox summoner = new HBox(summonerInput, summonerController);
+
+        VBox summoner = new VBox(tagAndInput, summonerController);
+        summoner.setSpacing(2);
         summoner.setAlignment(Pos.CENTER);
-        root.setBottom(summoner);
-        BorderPane.setAlignment(summoner, Pos.BASELINE_CENTER);
+
+        io = new VBox(summoner);
+        root.setCenter(io);
+        io.setAlignment(Pos.CENTER);
+        BorderPane.setAlignment(summoner, Pos.BOTTOM_CENTER);
 
         summonerController.setAlignment(Pos.CENTER);
 
         summonerController.setOnMousePressed(e -> summonerControllerPress());
 
-        Scene scene = new Scene(root);
+        scene = new Scene(root);
         primaryStage.setScene(scene);
 
         primaryStage.show();
@@ -55,7 +66,11 @@ public class Main extends Application {
         summonerInput.clear();
 
         if(player != null) {
-            summonerInput.setText(player.getSummonerId());
+            //summonerInput.setText(player.getSummonerId());
+            Text info = new Text(player.getSummonerId());
+            info.wrappingWidthProperty().bind(scene.widthProperty().subtract(10));
+            info.setTextAlignment(TextAlignment.CENTER);
+            io.getChildren().add(info);
         }
         else {
             summonerInput.setText("Invalid Request");
