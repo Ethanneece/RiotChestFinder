@@ -63,10 +63,13 @@ public class Main extends Application {
     private void summonerControllerPress() {
         Summoner player = finder.getSummoner(summonerInput.getText());
 
+        player.setChampionsWithOutChest(finder.getNoChests(player.getSummonerId()));
+
         summonerInput.clear();
 
+        summonerInput.setText(player.getRandomChamp());
+
         if(player != null) {
-            //summonerInput.setText(player.getSummonerId());
             Text info = new Text(player.getSummonerId());
             info.wrappingWidthProperty().bind(scene.widthProperty().subtract(10));
             info.setTextAlignment(TextAlignment.CENTER);

@@ -9,6 +9,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
@@ -19,6 +21,7 @@ public class RiotChestFinder {
     private int requestFiredIn2Minutes;
     private LocalTime timeWhenRequestReset;
     private final int MAX_REQUEST_PER_2_MINUTES = 100;
+    private Map<Long, String> champIdList;
 
     public RiotChestFinder() throws FileNotFoundException {
 
@@ -33,6 +36,19 @@ public class RiotChestFinder {
 
         requestFiredIn2Minutes = 0;
         timeWhenRequestReset = LocalTime.now().plusMinutes(2);
+
+        champIdList = new HashMap<>();
+
+        reader = new Scanner(new File("championIds.txt"));
+
+        while(reader.hasNextLine()) {
+            String line = reader.nextLine();
+
+            String championName = line.substring(0, line.indexOf(' '));
+            Long id = new Long(line.substring(line.lastIndexOf(' ') + 1));
+
+            champIdList.put(id, championName);
+        }
     }
 
     /**
@@ -58,7 +74,6 @@ public class RiotChestFinder {
 
             return new Summoner( (String) jason.get("name"), (String) jason.get("id"), (String) jason.get("accountId"));
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -66,21 +81,21 @@ public class RiotChestFinder {
         return null;
     }
 
-    public ArrayList<Long> getNoChests(String summonerId){
+    public ArrayList<String> getNoChests(String summonerId) {
         //uwu lemme do this okie
-        ArrayList<Long> names = new ArrayList<Long>();
+        ArrayList<String> names = new ArrayList<>();
         try {
-            URL gettingChampions = new URL("https://na1.api.riotgames.com/lol/champion-mastery" +
-                    "/v4/champion-masteries/by-summoner/" + summonerId + "?api_key=" + developmentKey);
+            URL gettingChampions = new URL(Summoner.CHAMPIONS_REQUEST + summonerId + "?api_key=" + developmentKey);
+
             String info = getRequest(gettingChampions);
 
-            JSONArray boiz = (JSONArray) new JSONParser().parse(info);
+            JSONArray championList = (JSONArray) new JSONParser().parse(info);
 
-            for(int i = 0; i < boiz.size(); i++) {
-                JSONObject jasonboi = (JSONObject) boiz.get(i);
+            for(int i = 0; i < championList.size(); i++) {
+                JSONObject champion = (JSONObject) championList.get(i);
 
-                if (!(boolean) jasonboi.get("chestGranted")) {
-                    names.add((Long)jasonboi.get("championId"));
+                if (!(boolean) champion.get("chestGranted")) {
+                    names.add(champIdList.get(champion.get("championId")));
                 }
             }
 
@@ -89,6 +104,7 @@ public class RiotChestFinder {
         }catch (ParseException e){
             System.out.println("JSON failed");
         }
+
 
         return names;
     }
@@ -107,7 +123,7 @@ public class RiotChestFinder {
         }
 
         try {
-            if(requestFiredIn2Minutes < MAX_REQUEST_PER_2_MINUTES) {
+            if(!rateLimitExceeded()) {
                 HttpURLConnection connect = (HttpURLConnection) url.openConnection();
 
                 connect.setRequestMethod("GET");
@@ -131,9 +147,6 @@ public class RiotChestFinder {
     }
 
     public boolean rateLimitExceeded() {
-        if (requestFiredIn2Minutes > MAX_REQUEST_PER_2_MINUTES) {
-            return true;
-        }
-        return false;
+        return requestFiredIn2Minutes > MAX_REQUEST_PER_2_MINUTES;
     }
 }
