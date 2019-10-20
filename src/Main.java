@@ -18,8 +18,10 @@ public class Main extends Application {
     private final int WIDTH = 500;
     private final int HEIGHT = 600;
 
-    private Button summonerController;
     private RiotChestFinder finder;
+    private Summoners players;
+
+    private Button summonerController;
     private TextField summonerInput;
     private VBox io;
     private Scene scene;
@@ -78,9 +80,13 @@ public class Main extends Application {
         else {
             summonerInput.setText("Invalid Request");
         }
+
+        players.addSummoner(player);
     }
 
     private void favoriting(){
-        
+        Summoner faved = finder.getSummoner(summonerInput.getText());
+        faved.setFavorite(true);
+        players.favorite(faved);
     }
 }

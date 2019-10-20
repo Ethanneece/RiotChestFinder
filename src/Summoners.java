@@ -26,6 +26,7 @@ public class Summoners {
         return;
         }
         summoners.get(summoners.indexOf(faved)).setFavorite(true);
+        //maybe resort the list
     }
 
     //method for saving favorites into file

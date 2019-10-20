@@ -72,7 +72,7 @@ public class RiotChestFinder {
 
             JSONObject jason = (JSONObject) new JSONParser().parse(riotIdInfo);
 
-            return new Summoner( (String) jason.get("name"), (String) jason.get("id"), (String) jason.get("accountId"));
+            return new Summoner( (String) jason.get("name"), (String) jason.get("id"), (String) jason.get("accountId"), false);
 
         } catch (Exception e) {
             e.printStackTrace();
