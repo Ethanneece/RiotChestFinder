@@ -4,8 +4,8 @@ import java.util.Objects;
 public class Summoner {
 
     private String summonerName, summonerId, accountId;
-    private boolean favorited;
-    private long[] championsWithOutChest;
+    private boolean favorite;
+    private long[] noChestChampions;
 
 
     public static final String ACCOUNT_ID_REQUEST = "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
@@ -21,12 +21,12 @@ public class Summoner {
         noChestChampions = new ArrayList<>();
     }
 
-    public boolean isFavorited() {
-        return favorited;
+    public boolean isFavorite() {
+        return favorite;
     }
 
-    public void setFavorited(boolean favorited) {
-        this.favorited = favorited;
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
     }
 
     public String getSummonerName() {
