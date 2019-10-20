@@ -5,7 +5,7 @@ public class Summoner {
 
     private String summonerName, summonerId, accountId;
     private boolean favorite;
-    private long[] noChestChampions;
+    private ArrayList<String> noChestChampions;
 
 
     public static final String ACCOUNT_ID_REQUEST = "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/";

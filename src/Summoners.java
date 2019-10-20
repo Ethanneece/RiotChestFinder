@@ -25,7 +25,7 @@ public class Summoners {
             addSummoner(faved);
         return;
         }
-        summoners.get(summoners.indexOf(faved)).setFavorited(true);
+        summoners.get(summoners.indexOf(faved)).setFavorite(true);
     }
 
     //method for saving favorites into file
