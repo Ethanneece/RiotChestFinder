@@ -76,4 +76,8 @@ public class Main extends Application {
             summonerInput.setText("Invalid Request");
         }
     }
+
+    private void favoriting(){
+        
+    }
 }

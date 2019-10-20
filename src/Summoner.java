@@ -1,9 +1,8 @@
 import java.util.Objects;
 
 public class Summoner {
-    private String summonerName;
-    private String summonerId;
-    private String accountId;
+    private String summonerName, summonerId, accountId;
+    private boolean favorited;
     private long[] championsWithOutChest;
 
     public static final String ACCOUNT_ID_REQUEST = "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
@@ -14,6 +13,14 @@ public class Summoner {
         this.summonerName = summonerName;
         this.summonerId = summonerId;
         this.accountId = accountId;
+    }
+
+    public boolean isFavorited() {
+        return favorited;
+    }
+
+    public void setFavorited(boolean favorited) {
+        this.favorited = favorited;
     }
 
     public String getSummonerName() {
