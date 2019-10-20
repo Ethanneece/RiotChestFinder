@@ -1,18 +1,24 @@
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Summoner {
+
     private String summonerName, summonerId, accountId;
     private boolean favorited;
     private long[] championsWithOutChest;
 
+
     public static final String ACCOUNT_ID_REQUEST = "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
-    public static final String CHAMPIONS_REQUEST = "theres another differnt URL for if you want all champs I'll add it when the website isnt down";
+    public static final String CHAMPIONS_REQUEST = "https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/";
 
 
-    public Summoner(String summonerName, String summonerId, String accountId) {
+    public Summoner(String summonerName, String summonerId, String accountId, boolean favorite) {
         this.summonerName = summonerName;
         this.summonerId = summonerId;
         this.accountId = accountId;
+        this.favorite = favorite;
+
+        noChestChampions = new ArrayList<>();
     }
 
     public boolean isFavorited() {
@@ -35,12 +41,17 @@ public class Summoner {
         return accountId;
     }
 
-    public long[] getChampionsWithOutChest() {
-        return championsWithOutChest;
+    public boolean getFavorite() {
+        return favorite; 
     }
 
-    public void setChampionsWithOutChest(long[] championsWithOutChest) {
-        this.championsWithOutChest = championsWithOutChest;
+
+    public String getRandomChamp() {
+        return noChestChampions.get((int) (Math.random() * noChestChampions.size()));
+    }
+
+    public void setChampionsWithOutChest(ArrayList championsWithOutChest) {
+        this.noChestChampions = championsWithOutChest;
     }
 
     @Override
