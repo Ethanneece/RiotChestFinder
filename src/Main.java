@@ -86,7 +86,6 @@ public class Main extends Application {
 
     private void favoriting(){
         Summoner faved = finder.getSummoner(summonerInput.getText());
-        faved.setFavorite(true);
-        players.favorite(faved);
+        players.changeFavoriteStatus(faved);
     }
 }

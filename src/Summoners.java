@@ -20,12 +20,12 @@ public class Summoners {
     }
 
     //method for favoritin
-    public void favorite(Summoner faved) {
+    public void changeFavoriteStatus(Summoner faved) {
         if (!summoners.contains(faved)){
             addSummoner(faved);
         return;
         }
-        summoners.get(summoners.indexOf(faved)).setFavorite(true);
+        summoners.get(summoners.indexOf(faved)).switchFavorite();
         //maybe resort the list
     }
 

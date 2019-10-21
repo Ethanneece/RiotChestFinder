@@ -25,8 +25,8 @@ public class Summoner {
         return favorite;
     }
 
-    public void setFavorite(boolean favorite) {
-        this.favorite = favorite;
+    public void switchFavorite() {
+        favorite = !favorite;
     }
 
     public String getSummonerName() {
