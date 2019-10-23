@@ -22,6 +22,7 @@ public class Main extends Application {
     private Summoners players;
 
     private Button summonerController;
+    private Button summonerFavorite;
     private TextField summonerInput;
     private VBox io;
     private Scene scene;
@@ -29,7 +30,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
+        players = new Summoners();
         finder = new RiotChestFinder();
 
         primaryStage.setTitle("FindingChestChampions");
@@ -41,9 +42,16 @@ public class Main extends Application {
         summonerInput = new TextField();
         HBox tagAndInput = new HBox(new Text("Name: "), summonerInput);
         tagAndInput.setAlignment(Pos.CENTER);
-        summonerController = new Button("Find Summoner");
 
-        VBox summoner = new VBox(tagAndInput, summonerController);
+        summonerController = new Button("Find Summoner");
+        summonerController.setAlignment(Pos.CENTER);
+        summonerController.setOnMousePressed(e -> summonerControllerPress());
+
+        summonerFavorite = new Button("☆");
+        summonerFavorite.setAlignment(Pos.CENTER);
+        summonerFavorite.setOnMousePressed(e -> favoriting());
+
+        VBox summoner = new VBox(tagAndInput, summonerController, summonerFavorite);
         summoner.setSpacing(2);
         summoner.setAlignment(Pos.CENTER);
 
@@ -51,10 +59,6 @@ public class Main extends Application {
         root.setCenter(io);
         io.setAlignment(Pos.CENTER);
         BorderPane.setAlignment(summoner, Pos.BOTTOM_CENTER);
-
-        summonerController.setAlignment(Pos.CENTER);
-
-        summonerController.setOnMousePressed(e -> summonerControllerPress());
 
         scene = new Scene(root);
         primaryStage.setScene(scene);
@@ -67,17 +71,18 @@ public class Main extends Application {
 
         player.setChampionsWithOutChest(finder.getNoChests(player.getSummonerId()));
 
-        summonerInput.clear();
-
-        summonerInput.setText(player.getRandomChamp());
+//        summonerInput.clear();
 
         if(player != null) {
-            Text info = new Text(player.getSummonerId());
+            if(player.getFavorite())
+                summonerFavorite.setText("★");
+            Text info = new Text(player.getSummonerId() + "\nRandom Champ: " + player.getRandomChamp());
             info.wrappingWidthProperty().bind(scene.widthProperty().subtract(10));
             info.setTextAlignment(TextAlignment.CENTER);
             io.getChildren().add(info);
         }
         else {
+            summonerInput.clear();
             summonerInput.setText("Invalid Request");
         }
 
@@ -86,6 +91,15 @@ public class Main extends Application {
 
     private void favoriting(){
         Summoner faved = finder.getSummoner(summonerInput.getText());
-        players.changeFavoriteStatus(faved);
+        if(faved != null) {
+            if (!faved.getFavorite())
+                summonerFavorite.setText("★");
+            else
+                summonerFavorite.setText("☆");
+            players.changeFavoriteStatus(faved);
+        }else{
+            summonerInput.clear();
+            summonerInput.setText("Invalid Request");
+        }
     }
 }

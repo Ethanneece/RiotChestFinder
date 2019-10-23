@@ -1,21 +1,24 @@
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Summoners {
     private ArrayList<Summoner> summoners = new ArrayList<Summoner>();
+    private final File REFERENCE = new File("favoriteSummoners.txt");
 
     //method to load favorites
-    public Summoners() throws FileNotFoundException {
-        Scanner scan = new Scanner(new File("favoriteSummoners.txt"));
-        while(scan.hasNextLine()){
-
+    public Summoners() throws IOException{
+        REFERENCE.createNewFile();
+        Scanner scan = new Scanner(REFERENCE);
+        while (scan.hasNextLine()) {
+            Summoner s = new Summoner(scan.next(), scan.next(), scan.next(), scan.nextBoolean());
+            summoners.add(s);
         }
     }
 
     public void addSummoner(Summoner searched){
-        if(!summoners.contains(searched))   //double check this bc it might just check they point to same thing
+        if(!summoners.contains(searched))
             summoners.add(searched);
     }
 
@@ -30,4 +33,7 @@ public class Summoners {
     }
 
     //method for saving favorites into file
+    public void saving(){
+
+    }
 }
