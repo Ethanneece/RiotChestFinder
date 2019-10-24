@@ -74,8 +74,10 @@ public class Main extends Application {
 //        summonerInput.clear();
 
         if(player != null) {
-            if(player.getFavorite())
+            if(players.getSummoner(player).getFavorite())
                 summonerFavorite.setText("★");
+            else
+                summonerFavorite.setText("☆");
             Text info = new Text(player.getSummonerId() + "\nRandom Champ: " + player.getRandomChamp());
             info.wrappingWidthProperty().bind(scene.widthProperty().subtract(10));
             info.setTextAlignment(TextAlignment.CENTER);

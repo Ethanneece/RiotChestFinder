@@ -17,6 +17,12 @@ public class Summoners {
         }
     }
 
+    public Summoner getSummoner(Summoner s){
+        if(summoners.contains(s))
+            return summoners.get(summoners.indexOf(s));
+        return s;
+    }
+
     public void addSummoner(Summoner searched){
         if(!summoners.contains(searched))
             summoners.add(searched);
