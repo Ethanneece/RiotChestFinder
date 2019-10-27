@@ -20,6 +20,7 @@ public class Main extends Application {
 
     private RiotChestFinder finder;
     private Summoners players;
+    private Summoner currentSearch;
 
     private Button summonerController;
     private Button summonerFavorite;
@@ -64,21 +65,22 @@ public class Main extends Application {
         primaryStage.setScene(scene);
 
         primaryStage.show();
+
+        primaryStage.setOnCloseRequest(e -> players.saving());
     }
 
     private void summonerControllerPress() {
-        Summoner player = finder.getSummoner(summonerInput.getText());
+        currentSearch = finder.getSummoner(summonerInput.getText());
 
-        player.setChampionsWithOutChest(finder.getNoChests(player.getSummonerId()));
+        currentSearch.setChampionsWithOutChest(finder.getNoChests(currentSearch.getSummonerId()));
 
-//        summonerInput.clear();
-
-        if(player != null) {
-            if(players.getSummoner(player).getFavorite())
+        if(currentSearch != null) {
+            if(players.getSummoner(currentSearch).getFavorite())
                 summonerFavorite.setText("★");
             else
                 summonerFavorite.setText("☆");
-            Text info = new Text(player.getSummonerId() + "\nRandom Champ: " + player.getRandomChamp());
+
+            Text info = new Text(currentSearch.getSummonerId() + "\nRandom Champ: " + currentSearch.getRandomChamp());
             info.wrappingWidthProperty().bind(scene.widthProperty().subtract(10));
             info.setTextAlignment(TextAlignment.CENTER);
             io.getChildren().add(info);
@@ -88,20 +90,19 @@ public class Main extends Application {
             summonerInput.setText("Invalid Request");
         }
 
-        players.addSummoner(player);
+        players.addSummoner(currentSearch);
     }
 
     private void favoriting(){
-        Summoner faved = finder.getSummoner(summonerInput.getText());
-        if(faved != null) {
-            if (!faved.getFavorite())
+        if(currentSearch != null) {
+            if (!currentSearch.getFavorite())
                 summonerFavorite.setText("★");
             else
                 summonerFavorite.setText("☆");
-            players.changeFavoriteStatus(faved);
+            players.changeFavoriteStatus(currentSearch);
         }else{
             summonerInput.clear();
-            summonerInput.setText("Invalid Request");
+            summonerInput.setText("Cannot Favorite :C");
         }
     }
 }

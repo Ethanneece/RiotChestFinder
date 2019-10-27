@@ -1,4 +1,5 @@
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -7,7 +8,6 @@ public class Summoners {
     private ArrayList<Summoner> summoners = new ArrayList<Summoner>();
     private final File REFERENCE = new File("favoriteSummoners.txt");
 
-    //method to load favorites
     public Summoners() throws IOException{
         REFERENCE.createNewFile();
         Scanner scan = new Scanner(REFERENCE);
@@ -28,7 +28,6 @@ public class Summoners {
             summoners.add(searched);
     }
 
-    //method for favoritin
     public void changeFavoriteStatus(Summoner faved) {
         if (!summoners.contains(faved)){
             addSummoner(faved);
@@ -40,6 +39,14 @@ public class Summoners {
 
     //method for saving favorites into file
     public void saving(){
-
+        System.out.println("Saving...");
+        try {
+            FileWriter fw = new FileWriter("favoriteSummoners.txt");
+            for(Summoner s: summoners){ //TODO: fix the writer
+                fw.write(s.toString());
+            }
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 }
